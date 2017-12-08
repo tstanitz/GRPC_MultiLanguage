@@ -1,8 +1,15 @@
 ﻿syntax = "proto3";
-import "sampleMessages.proto";
 
 option csharp_namespace = "GrpcDefinition";
 
 service SalutationServer{
 	rpc Salute(SampleRequest) returns (SampleResponse){}
+}
+
+message SampleResponse{
+	string salutation = 1;
+}
+
+message SampleRequest{
+	string name = 1;
 }

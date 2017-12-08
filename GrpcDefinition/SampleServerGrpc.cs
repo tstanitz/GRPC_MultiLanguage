@@ -13,10 +13,10 @@ namespace GrpcDefinition {
   {
     static readonly string __ServiceName = "SalutationServer";
 
-    static readonly grpc::Marshaller<global::SampleRequest> __Marshaller_SampleRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::SampleRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::SampleResponse> __Marshaller_SampleResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::SampleResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDefinition.SampleRequest> __Marshaller_SampleRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDefinition.SampleRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDefinition.SampleResponse> __Marshaller_SampleResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDefinition.SampleResponse.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::SampleRequest, global::SampleResponse> __Method_Salute = new grpc::Method<global::SampleRequest, global::SampleResponse>(
+    static readonly grpc::Method<global::GrpcDefinition.SampleRequest, global::GrpcDefinition.SampleResponse> __Method_Salute = new grpc::Method<global::GrpcDefinition.SampleRequest, global::GrpcDefinition.SampleResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Salute",
@@ -32,7 +32,7 @@ namespace GrpcDefinition {
     /// <summary>Base class for server-side implementations of SalutationServer</summary>
     public abstract partial class SalutationServerBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::SampleResponse> Salute(global::SampleRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GrpcDefinition.SampleResponse> Salute(global::GrpcDefinition.SampleRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -62,19 +62,19 @@ namespace GrpcDefinition {
       {
       }
 
-      public virtual global::SampleResponse Salute(global::SampleRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual global::GrpcDefinition.SampleResponse Salute(global::GrpcDefinition.SampleRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         return Salute(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::SampleResponse Salute(global::SampleRequest request, grpc::CallOptions options)
+      public virtual global::GrpcDefinition.SampleResponse Salute(global::GrpcDefinition.SampleRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_Salute, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::SampleResponse> SaluteAsync(global::SampleRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GrpcDefinition.SampleResponse> SaluteAsync(global::GrpcDefinition.SampleRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         return SaluteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::SampleResponse> SaluteAsync(global::SampleRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GrpcDefinition.SampleResponse> SaluteAsync(global::GrpcDefinition.SampleRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Salute, null, options, request);
       }

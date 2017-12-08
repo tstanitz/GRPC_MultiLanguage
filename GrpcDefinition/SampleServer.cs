@@ -22,16 +22,258 @@ namespace GrpcDefinition {
     static SampleServerReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJzYW1wbGVTZXJ2ZXIucHJvdG8aFHNhbXBsZU1lc3NhZ2VzLnByb3RvMj8K",
-            "EFNhbHV0YXRpb25TZXJ2ZXISKwoGU2FsdXRlEg4uU2FtcGxlUmVxdWVzdBoP",
-            "LlNhbXBsZVJlc3BvbnNlIgBCEaoCDkdycGNEZWZpbml0aW9uYgZwcm90bzM="));
+            "ChJzYW1wbGVTZXJ2ZXIucHJvdG8iJAoOU2FtcGxlUmVzcG9uc2USEgoKc2Fs",
+            "dXRhdGlvbhgBIAEoCSIdCg1TYW1wbGVSZXF1ZXN0EgwKBG5hbWUYASABKAky",
+            "PwoQU2FsdXRhdGlvblNlcnZlchIrCgZTYWx1dGUSDi5TYW1wbGVSZXF1ZXN0",
+            "Gg8uU2FtcGxlUmVzcG9uc2UiAEIRqgIOR3JwY0RlZmluaXRpb25iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::SampleMessagesReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, null));
+          new pbr::FileDescriptor[] { },
+          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDefinition.SampleResponse), global::GrpcDefinition.SampleResponse.Parser, new[]{ "Salutation" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDefinition.SampleRequest), global::GrpcDefinition.SampleRequest.Parser, new[]{ "Name" }, null, null, null)
+          }));
     }
     #endregion
 
   }
+  #region Messages
+  public sealed partial class SampleResponse : pb::IMessage<SampleResponse> {
+    private static readonly pb::MessageParser<SampleResponse> _parser = new pb::MessageParser<SampleResponse>(() => new SampleResponse());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SampleResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDefinition.SampleServerReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleResponse(SampleResponse other) : this() {
+      salutation_ = other.salutation_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleResponse Clone() {
+      return new SampleResponse(this);
+    }
+
+    /// <summary>Field number for the "salutation" field.</summary>
+    public const int SalutationFieldNumber = 1;
+    private string salutation_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Salutation {
+      get { return salutation_; }
+      set {
+        salutation_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SampleResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SampleResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Salutation != other.Salutation) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Salutation.Length != 0) hash ^= Salutation.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Salutation.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Salutation);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Salutation.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Salutation);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SampleResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Salutation.Length != 0) {
+        Salutation = other.Salutation;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Salutation = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SampleRequest : pb::IMessage<SampleRequest> {
+    private static readonly pb::MessageParser<SampleRequest> _parser = new pb::MessageParser<SampleRequest>(() => new SampleRequest());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SampleRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDefinition.SampleServerReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleRequest(SampleRequest other) : this() {
+      name_ = other.name_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SampleRequest Clone() {
+      return new SampleRequest(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SampleRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SampleRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SampleRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  #endregion
+
 }
 
 #endregion Designer generated code

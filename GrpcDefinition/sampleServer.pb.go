@@ -8,13 +8,14 @@ It is generated from these files:
 	sampleServer.proto
 
 It has these top-level messages:
+	SampleResponse
+	SampleRequest
 */
 package sampleServer
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import sampleMessages "."
 
 import (
 	context "golang.org/x/net/context"
@@ -32,6 +33,43 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+type SampleResponse struct {
+	Salutation string `protobuf:"bytes,1,opt,name=salutation" json:"salutation,omitempty"`
+}
+
+func (m *SampleResponse) Reset()                    { *m = SampleResponse{} }
+func (m *SampleResponse) String() string            { return proto.CompactTextString(m) }
+func (*SampleResponse) ProtoMessage()               {}
+func (*SampleResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+
+func (m *SampleResponse) GetSalutation() string {
+	if m != nil {
+		return m.Salutation
+	}
+	return ""
+}
+
+type SampleRequest struct {
+	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+}
+
+func (m *SampleRequest) Reset()                    { *m = SampleRequest{} }
+func (m *SampleRequest) String() string            { return proto.CompactTextString(m) }
+func (*SampleRequest) ProtoMessage()               {}
+func (*SampleRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *SampleRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func init() {
+	proto.RegisterType((*SampleResponse)(nil), "SampleResponse")
+	proto.RegisterType((*SampleRequest)(nil), "SampleRequest")
+}
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
 var _ grpc.ClientConn
@@ -43,7 +81,7 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for SalutationServer service
 
 type SalutationServerClient interface {
-	Salute(ctx context.Context, in *sampleMessages.SampleRequest, opts ...grpc.CallOption) (*sampleMessages.SampleResponse, error)
+	Salute(ctx context.Context, in *SampleRequest, opts ...grpc.CallOption) (*SampleResponse, error)
 }
 
 type salutationServerClient struct {
@@ -54,8 +92,8 @@ func NewSalutationServerClient(cc *grpc.ClientConn) SalutationServerClient {
 	return &salutationServerClient{cc}
 }
 
-func (c *salutationServerClient) Salute(ctx context.Context, in *sampleMessages.SampleRequest, opts ...grpc.CallOption) (*sampleMessages.SampleResponse, error) {
-	out := new(sampleMessages.SampleResponse)
+func (c *salutationServerClient) Salute(ctx context.Context, in *SampleRequest, opts ...grpc.CallOption) (*SampleResponse, error) {
+	out := new(SampleResponse)
 	err := grpc.Invoke(ctx, "/SalutationServer/Salute", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -66,7 +104,7 @@ func (c *salutationServerClient) Salute(ctx context.Context, in *sampleMessages.
 // Server API for SalutationServer service
 
 type SalutationServerServer interface {
-	Salute(context.Context, *sampleMessages.SampleRequest) (*sampleMessages.SampleResponse, error)
+	Salute(context.Context, *SampleRequest) (*SampleResponse, error)
 }
 
 func RegisterSalutationServerServer(s *grpc.Server, srv SalutationServerServer) {
@@ -74,7 +112,7 @@ func RegisterSalutationServerServer(s *grpc.Server, srv SalutationServerServer) 
 }
 
 func _SalutationServer_Salute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(sampleMessages.SampleRequest)
+	in := new(SampleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -86,7 +124,7 @@ func _SalutationServer_Salute_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/SalutationServer/Salute",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SalutationServerServer).Salute(ctx, req.(*sampleMessages.SampleRequest))
+		return srv.(SalutationServerServer).Salute(ctx, req.(*SampleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -107,13 +145,15 @@ var _SalutationServer_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("sampleServer.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 128 bytes of a gzipped FileDescriptorProto
+	// 156 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2a, 0x4e, 0xcc, 0x2d,
-	0xc8, 0x49, 0x0d, 0x4e, 0x2d, 0x2a, 0x4b, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x97, 0x12,
-	0x81, 0x88, 0xf9, 0xa6, 0x16, 0x17, 0x27, 0xa6, 0xa7, 0x16, 0x43, 0x44, 0x8d, 0xec, 0xb9, 0x04,
-	0x82, 0x13, 0x73, 0x4a, 0x4b, 0x12, 0x4b, 0x32, 0xf3, 0xf3, 0x20, 0xea, 0x85, 0xb4, 0xb9, 0xd8,
-	0xc0, 0x62, 0xa9, 0x42, 0x7c, 0x7a, 0xc1, 0x60, 0x4d, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25,
-	0x52, 0xfc, 0x70, 0x7e, 0x71, 0x41, 0x7e, 0x5e, 0x71, 0xaa, 0x12, 0x83, 0x93, 0xe0, 0x2a, 0x26,
-	0x3e, 0xf7, 0xa2, 0x82, 0x64, 0x97, 0xd4, 0xb4, 0xcc, 0xbc, 0x4c, 0x90, 0x29, 0x49, 0x6c, 0x60,
-	0xa3, 0x8d, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0x7f, 0x23, 0x62, 0x5f, 0x86, 0x00, 0x00, 0x00,
+	0xc8, 0x49, 0x0d, 0x4e, 0x2d, 0x2a, 0x4b, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0x32,
+	0xe0, 0xe2, 0x0b, 0x06, 0x8b, 0x06, 0xa5, 0x16, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x0a, 0xc9, 0x71,
+	0x71, 0x15, 0x27, 0xe6, 0x94, 0x96, 0x24, 0x96, 0x64, 0xe6, 0xe7, 0x49, 0x30, 0x2a, 0x30, 0x6a,
+	0x70, 0x06, 0x21, 0x89, 0x28, 0x29, 0x73, 0xf1, 0xc2, 0x74, 0x14, 0x96, 0xa6, 0x16, 0x97, 0x08,
+	0x09, 0x71, 0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x42, 0x95, 0x82, 0xd9, 0x46, 0xf6, 0x5c, 0x02, 0xc1,
+	0x70, 0x2d, 0x10, 0x0b, 0x85, 0xb4, 0xb9, 0xd8, 0xc0, 0x62, 0xa9, 0x42, 0x7c, 0x7a, 0x28, 0x26,
+	0x48, 0xf1, 0xeb, 0xa1, 0xba, 0x41, 0x89, 0xc1, 0x49, 0x70, 0x15, 0x13, 0x9f, 0x7b, 0x51, 0x41,
+	0xb2, 0x4b, 0x6a, 0x5a, 0x66, 0x5e, 0x26, 0xc8, 0x94, 0x24, 0x36, 0xb0, 0x8b, 0x8d, 0x01, 0x01,
+	0x00, 0x00, 0xff, 0xff, 0xb8, 0x19, 0xdf, 0xa7, 0xc7, 0x00, 0x00, 0x00,
 }

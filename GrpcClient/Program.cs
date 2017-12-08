@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using GrpcDefinition;
 using System;
 using System.Threading.Tasks;
 using static GrpcDefinition.SalutationServer;

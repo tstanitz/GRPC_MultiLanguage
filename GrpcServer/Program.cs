@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using static GrpcDefinition.SalutationServer;
+using GrpcDefinition;
 
 namespace GrpcServer
 {
@@ -24,7 +25,7 @@ namespace GrpcServer
     {
         public override Task<SampleResponse> Salute(SampleRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new SampleResponse { Salutation = $"Salute {request.Name} from Server" });
+            return Task.FromResult(new SampleResponse { Salutation = $"Hi {request.Name}, Salute from C# Server" });
         }
     }
 }
