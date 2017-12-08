@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+message SampleResponse{
+	string salutation = 1;
+}
+
+message SampleRequest{
+	string name = 1;
+}
+
