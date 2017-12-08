@@ -1,3 +1,7 @@
 ﻿protoc --csharp_out=. sampleMessages.proto
 
 protoc --grpc_out=. --csharp_out=. --plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe sampleServer.proto
+
+or 
+
+protoc --grpc_out=. --csharp_out=. --plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe sampleServer.proto sampleMessages.proto
