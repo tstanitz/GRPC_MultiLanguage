@@ -14,7 +14,7 @@ namespace GrpcClient
 
             var client = new SalutationServerClient(channel);
 
-            var reply = await client.SaluteAsync(new SampleRequest { Name = "C#" });
+            var reply = await client.SaluteAsync(new SampleRequest { Name = "dotnet client" });
 
             Console.WriteLine(reply.Salutation);
 
