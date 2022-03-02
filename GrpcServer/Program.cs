@@ -25,7 +25,7 @@ namespace GrpcServer
     {
         public override Task<SampleResponse> Salute(SampleRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new SampleResponse { Salutation = $"Hi {request.Name}, Salute from C# Server" });
+            return Task.FromResult(new SampleResponse { Salutation = $"Hi {request.Name}, Salute from dotnet server" });
         }
     }
 }
